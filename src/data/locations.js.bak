@@ -1,0 +1,840 @@
+export const CATEGORIES = {
+  towers: { label: 'Башни и архитектура', color: '#8B5A2B' },
+  events: { label: 'События', color: '#DC2626' },
+  people: { label: 'Личности', color: '#2563EB' },
+  sights: { label: 'Природа и музеи', color: '#16A34A' },
+};
+
+export const AREAS = [
+  { id: 'achkhoy', name: 'Ачхой-Мартановский район', center: [43.18, 45.28], zoom: 10 },
+  { id: 'vedeno', name: 'Веденский район', center: [42.96, 46.10], zoom: 10 },
+  { id: 'grozny', name: 'Грозненский район', center: [43.31, 45.69], zoom: 10 },
+  { id: 'gudermes', name: 'Гудермесский район', center: [43.35, 46.10], zoom: 10 },
+  { id: 'itum-kali', name: 'Итум-Калинский район', center: [42.73, 45.57], zoom: 10 },
+  { id: 'kurchaloy', name: 'Курчалоевский район', center: [43.20, 46.08], zoom: 10 },
+  { id: 'nadterechny', name: 'Надтеречный район', center: [43.68, 45.05], zoom: 10 },
+  { id: 'naursky', name: 'Наурский район', center: [43.65, 45.31], zoom: 10 },
+  { id: 'nozhay', name: 'Ножай-Юртовский район', center: [43.05, 46.38], zoom: 10 },
+  { id: 'sernovodsky', name: 'Серноводский район', center: [43.31, 45.15], zoom: 10 },
+  { id: 'urus-martan', name: 'Урус-Мартановский район', center: [43.12, 45.54], zoom: 10 },
+  { id: 'shali', name: 'Шалинский район', center: [43.15, 45.90], zoom: 10 },
+  { id: 'sharoy', name: 'Шаройский район', center: [42.63, 45.81], zoom: 11 },
+  { id: 'shatoy', name: 'Шатойский район', center: [42.87, 45.70], zoom: 10 },
+  { id: 'shchelkov', name: 'Шелковской район', center: [43.50, 46.20], zoom: 10 },
+];
+
+export const VILLAGES_BY_AREA = {
+  'achkhoy': ['Ачхой-Мартан', 'Валерик', 'Давыденко', 'Закан-Юрт', 'Катар-Юрт', 'Кулары', 'Новый Шарой', 'Самашки', 'Старый Ачхой', 'Хамби-Ирзи', 'Шаами-Юрт', 'Янди', 'Галанчож'],
+  'vedeno': ['Агишбатой', 'Белгатой', 'Беной', 'Ведено', 'Гуни', 'Дарго', 'Дышне-Ведено', 'Верхние Курчали', 'Нижние Курчали', 'Средние Курчали', 'Макажой', 'Махкеты', 'Сельментаузен', 'Тазен-Кала', 'Тевзана', 'Харачой', 'Хаттунино', 'Хой', 'Ца-Ведено', 'Верхнее Ца-Ведено', 'Элистанжи', 'Эрсеной', 'Кезеной'],
+  'grozny': ['Горячеисточненская', 'Ильиновская', 'Первомайская', 'Петропавловская', 'Алхан-Кала', 'Беркат-Юрт', 'Виноградное', 'Гунюшки', 'Долинский', 'Майский', 'Газгородок', 'Дружба', 'Набережный', 'Грозный', 'Алды'],
+  'gudermes': ['Гудермес', 'Ойсхара', 'Азамат-Юрт', 'Бильтой-Юрт', 'Брагуны', 'Верхний Нойбер', 'Герзель-Аул', 'Гордали-Юрт', 'Дарбанхи', 'Джалка', 'Ишхой-Юрт', 'Кади-Юрт', 'Комсомольское', 'Кошкельды', 'Мелчхи', 'Нижний Нойбер', 'Новый Беной', 'Новый Энгеной', 'Хангиш-Юрт', 'Шуани', 'Энгель-Юрт'],
+  'itum-kali': ['Баулой', 'Бугарой', 'Ведучи', 'Гухой', 'Гучум-Кали', 'Зумсой', 'Итум-Кали', 'Кокадой', 'Моцкарой', 'Тазбичи', 'Тусхарой', 'Ушкалой', 'Хилдехарой', 'Цой-Педе', 'Пхакоч', 'Никарой'],
+  'kurchaloy': ['Курчалой', 'Аллерой', 'Ахкинчу-Борзой', 'Ахмат-Юрт', 'Бачи-Юрт', 'Гелдаган', 'Джигурты', 'Иласхан-Юрт', 'Майртуп', 'Регита', 'Хиди-Хутор', 'Цоци-Юрт', 'Эникали', 'Ялхой-Мохк'],
+  'nadterechny': ['Знаменское', 'Горагорский', 'Бено-Юрт', 'Братское', 'Верхний Наур', 'Гвардейское', 'Зебир-Юрт', 'Калаус', 'Комарово', 'Мекен-Юрт', 'Надтеречное', 'Подгорное'],
+  'naursky': ['Наурская', 'Алпатово', 'Ульяновское', 'Чернокозово', 'Рубежное', 'Левобережное', 'Ново-Солёное'],
+  'nozhay': ['Ножай-Юрт', 'Айти-Мохк', 'Беной-Мохк', 'Ведено-Гор', 'Гуршнуй', 'Даттах', 'Ишхой-Хутор', 'Кади-Юрт', 'Мехкечи', 'Садой', 'Турты', 'Хутор-Мохк', 'Центарой', 'Юрт-Ой', 'Беной', 'Симсир'],
+  'sernovodsky': ['Серноводское', 'Ассиновская', 'Бамут'],
+  'urus-martan': ['Урус-Мартан', 'Краснопартизанский', 'Мичурина', 'Алхазурово', 'Алхан-Юрт', 'Гехи', 'Гехи-Чу', 'Гойты', 'Гой-Чу', 'Мартан-Чу', 'Рошни-Чу', 'Старые Атаги', 'Танги-Чу', 'Шалажи', 'Гойское'],
+  'shali': ['Шали', 'Герменчук', 'Мескер-Юрт', 'Чири-Юрт', 'Белгатой', 'Дуц-Хутор'],
+  'sharoy': ['Шарой', 'Кенхи', 'Хаккой', 'Химой'],
+  'shatoy': ['Шатой', 'Борзой', 'Гуни', 'Нихалой', 'Хаккой', 'Чарой', 'Гуш-Керт'],
+  'shchelkov': ['Шелковская', 'Червлённая', 'Старогладовская', 'Курдюковская', 'Дубовская', 'Каргалинская', 'Бороздиновская', 'Коби', 'Сары-Су', 'Дади-Юрт'],
+};
+
+export const locations = [
+  // ==========================================
+  // НОЖАЙ-ЮРТОВСКИЙ РАЙОН (с. Беной)
+  // ==========================================
+  {
+    id: 'person-baysangur',
+    number: 1, area: 'nozhay', village: 'Беной', category: 'people',
+    title: 'Байсангур Беноевский', description: 'Один из самых ярких полководцев Кавказской войны, наиб имама Шамиля.',
+    coords: [43.05, 46.40], taip: 'Беной', tukhum: 'Нохчмахкахой',
+    details: { image: null, history: 'После пленения имама в 1859 году возглавил сопротивление в Чечне. Даже после тяжёлых ранений (потеря глаза, руки, ноги) продолжал сражаться. В феврале 1861 года попал в плен. Казнён в Хасавюрте.', architecture: null, facts: 'В 2022 году в Грозном открыли памятник Байсангуру Беноевскому.' }
+  },
+  {
+    id: 'person-kadyrov-akhmat',
+    number: 2, area: 'nozhay', village: 'Беной', category: 'people',
+    title: 'Ахмат-Хаджи Кадыров (1951–2004)', description: 'Первый Президент Чеченской Республики, Герой России. Родовое село — Беной.',
+    coords: [43.05070, 46.40090], taip: 'Беной', tukhum: 'Нохчмахкахой',
+    details: { image: null, history: 'Возглавил республику в сложный период, инициировал мирные процессы.', architecture: null, facts: null }
+  },
+  {
+    id: 'person-chinaev',
+    number: 3, area: 'nozhay', village: 'Беной', category: 'people',
+    title: 'Щида Чинаев', description: 'Полковник Русской Императорской армии, офицер 2-й бригады «Дикой дивизии».',
+    coords: [43.05140, 46.40180], taip: 'Беной', tukhum: 'Нохчмахкахой',
+    details: { image: null, history: 'Участвовал в Первой мировой войне.', architecture: null, facts: null }
+  },
+  {
+    id: 'tower-benoit',
+    number: 4, area: 'nozhay', village: 'Беной', category: 'towers',
+    title: 'Бенойские башни', description: 'Исторические укрепления на территории родового села Беной.',
+    coords: [43.05210, 46.40270], taip: 'Беной', tukhum: 'Нохчмахкахой',
+    details: { image: null, history: null, architecture: null, facts: null }
+  },
+  {
+    id: 'event-simsim',
+    number: 5, area: 'nozhay', village: 'Симсир', category: 'events',
+    title: 'Восстание 1877–1878 гг.', description: 'Возглавил Алибек-Хаджи Алдамов. Крупное антиколониальное выступление.',
+    coords: [43.07, 46.42], taip: null, tukhum: null,
+    details: { image: null, history: null, architecture: null, facts: null }
+  },
+  {
+    id: 'person-alibek',
+    number: 6, area: 'nozhay', village: 'Симсир', category: 'people',
+    title: 'Алибек-Хаджи Алдамов', description: 'Имам Северного Кавказа, руководитель восстания 1877–1878 годов.',
+    coords: [43.07070, 46.42090], taip: null, tukhum: null,
+    details: { image: null, history: 'Родился в 1850 году в ауле Симсир. Казнён в 1878 году.', architecture: null, facts: null }
+  },
+
+  // ==========================================
+  // ШАЛИНСКИЙ РАЙОН
+  // ==========================================
+  {
+    id: 'person-buibulat',
+    number: 7, area: 'shali', village: 'Шали', category: 'people',
+    title: 'Бейбулат Таймиев', description: 'Военный и политический лидер. Сочетал военный талант с дипломатией: добивался для Чечни внутреннего самоуправления.',
+    coords: [43.15, 45.90], taip: 'Билтой', tukhum: 'Нохчмахкахой',
+    details: { image: null, history: 'Проводил русско-чеченские мирные переговоры.', architecture: null, facts: null }
+  },
+  {
+    id: 'person-talkhig',
+    number: 8, area: 'shali', village: 'Шали', category: 'people',
+    title: 'Талхиг Шалинский', description: 'Наиб имама Шамиля, командовал округами Шали и Большая Чечня.',
+    coords: [43.15070, 45.90090], taip: 'Курчалой', tukhum: 'Нохчмахкахой',
+    details: { image: null, history: null, architecture: null, facts: null }
+  },
+  {
+    id: 'person-zelimkhan',
+    number: 9, area: 'shali', village: 'Шали', category: 'people',
+    title: 'Зелимхан Харачоевский', description: 'Известный абрек. Погиб в 1913 году в неравном бою около села Шали.',
+    coords: [43.15140, 45.90180], taip: 'Харачой', tukhum: 'Нохчмахкахой',
+    details: { image: null, history: 'Совершил побег из Грозненской тюрьмы в 1901 году и ушёл в горы.', architecture: null, facts: 'Памятник в Харачое и в Шали.' }
+  },
+  {
+    id: 'person-khanpasha',
+    number: 10, area: 'shali', village: 'Шали', category: 'people',
+    title: 'Ханпаша Нурадилов', description: 'Командир пулемётного взвода, Герой Советского Союза (посмертно).',
+    coords: [43.15210, 45.90270], taip: null, tukhum: null,
+    details: { image: null, history: 'Уничтожил более 920 немецких солдат под Сталинградом.', architecture: null, facts: null }
+  },
+  {
+    id: 'sight-shira-yurt',
+    number: 11, area: 'shali', village: 'Герменчук', category: 'sights',
+    title: 'Музей «Шира-Юрт»', description: 'Восстановленный чеченский аул XVIII–XIX веков. На входе — 25-метровая сторожевая башня.',
+    coords: [43.15280, 45.90360], taip: null, tukhum: null,
+    details: { image: null, history: 'Включает жилые дома, мечеть, мельницу, кузницу, конюшню.', architecture: 'Традиционная чеченская архитектура.', facts: null }
+  },
+  {
+    id: 'event-germenchuk',
+    number: 12, area: 'shali', village: 'Герменчук', category: 'events',
+    title: 'Сожжение Герменчука (1820)', description: 'Во время карательных экспедиций русские войска сожгли село, хотя жители не оказали сопротивления.',
+    coords: [43.15350, 45.90450], taip: null, tukhum: null,
+    details: { image: null, history: null, architecture: null, facts: null }
+  },
+
+  // ==========================================
+  // ВЕДЕНСКИЙ РАЙОН
+  // ==========================================
+  {
+    id: 'sight-khoy',
+    number: 13, area: 'vedeno', village: 'Хой', category: 'sights',
+    title: 'Хойский историко-архитектурный комплекс', description: '«Город стражников». Включает жилые и боевые башни, одну из старейших мечетей Чечни.',
+    coords: [42.753, 46.132], taip: 'Хой', tukhum: 'Чеберлой',
+    details: { image: null, history: 'В 2017 году комплекс реставрировали, сохранив подлинную кладку.', architecture: 'Кладка без раствора. Планировка улиц и дворов повторяет исторический облик.', facts: 'Название «Хой» переводится как «стража».' }
+  },
+  {
+    id: 'waterfall-kharachoy',
+    number: 14, area: 'vedeno', village: 'Харачой', category: 'sights',
+    title: 'Харачойский водопад', description: 'Источник выходит на поверхность в известняковой пещере. В народе называют «Девичья коса».',
+    coords: [42.94, 46.02], taip: 'Харачой', tukhum: 'Нохчмахкахой',
+    details: { image: null, history: null, architecture: null, facts: 'Рядом установлен памятник Зелимхану Харачоевскому.' }
+  },
+  {
+    id: 'person-zelimkhan-kharachoy',
+    number: 15, area: 'vedeno', village: 'Харачой', category: 'people',
+    title: 'Зелимхан Харачоевский (родина)', description: 'Родился в селе Харачой. Известный абрек.',
+    coords: [42.94070, 46.02090], taip: 'Харачой', tukhum: 'Нохчмахкахой',
+    details: { image: null, history: null, architecture: null, facts: 'Здесь установлен памятник у родника «Девичья коса».' }
+  },
+  {
+    id: 'event-vedeno',
+    number: 16, area: 'vedeno', village: 'Ведено', category: 'events',
+    title: 'Столица имамата Шамиля', description: 'В середине XIX века Ведено было столицей имамата Шамиля.',
+    coords: [42.96, 46.10], taip: null, tukhum: 'Нохчмахкахой',
+    details: { image: null, history: 'Позже шейх Узун-Хаджи объявил Ведено столицей Северо-Кавказского эмиратства.', architecture: null, facts: null }
+  },
+  {
+    id: 'event-makazhoy',
+    number: 17, area: 'vedeno', village: 'Макажой', category: 'events',
+    title: 'Духовный центр Чеберлоя', description: 'Село исторически считалось духовным и культурным центром тукхума Чеберлой.',
+    coords: [42.96070, 46.10090], taip: null, tukhum: 'Чеберлой',
+    details: { image: null, history: null, architecture: null, facts: null }
+  },
+  {
+    id: 'sight-vedeno-fortress',
+    number: 18, area: 'vedeno', village: 'Дышне-Ведено', category: 'sights',
+    title: 'Крепость Ведено', description: 'Русская крепость 1850 года, одна из сохранившихся в Чечне.',
+    coords: [42.955, 46.115], taip: null, tukhum: null,
+    details: {
+      image: '/images/vedeno-fortress.jpg',
+      history: 'Крепость возводилась в период Кавказской войны как опорный пункт царских войск в стратегически важном районе. Ведено в середине XIX века было столицей имамата Шамиля, поэтому контроль над этим местом имел ключевое значение. В начале XX века шейх Узун-Хаджи объявил Ведено столицей Северо-Кавказского эмиратства. Сегодня крепость — объект исторического наследия и точка притяжения исследователей Кавказской войны.',
+      architecture: 'Сохранились фрагменты земляных валов и рвов, а также остатки каменных строений.',
+      facts: 'Построена в 1850 году. Расположена в окрестностях села Ведено.'
+    }
+  },
+
+  // ==========================================
+  // ИТУМ-КАЛИНСКИЙ РАЙОН
+  // ==========================================
+  {
+    id: 'tower-ushkaloy',
+    number: 19, area: 'itum-kali', village: 'Ушкалой', category: 'towers',
+    title: 'Ушкалойские башни-близнецы', description: 'Сторожевые башни XI–XII вв., встроенные в скалу Селин-Лам.',
+    coords: [42.78, 45.55], taip: null, tukhum: null,
+    details: { image: null, history: 'Контролировали транскавказский путь.', architecture: 'У башен только три стены, а четвёртой и крышей служит скала.', facts: 'Визитная карточка Аргунского ущелья.' }
+  },
+  {
+    id: 'tower-dere',
+    number: 20, area: 'itum-kali', village: 'Тазбичи', category: 'towers',
+    title: 'Башня Дёре', description: '900-летняя башня замкового типа высотой 23 метра.',
+    coords: [42.72, 45.56], taip: 'Чантий', tukhum: 'Чантий',
+    details: { image: null, history: 'Реставрировалась в 2010 году.', architecture: 'Толстые стены, узкие бойницы, сухая кладка.', facts: 'Вид на Аргунское ущелье.' }
+  },
+  {
+    id: 'tower-nikaroy',
+    number: 21, area: 'itum-kali', village: 'Никарой', category: 'towers',
+    title: 'Никаройская боевая башня', description: 'Один из наиболее сохранившихся средневековых комплексов.',
+    coords: [42.70, 45.40], taip: null, tukhum: 'Терлой',
+    details: { image: null, history: null, architecture: 'Пятиэтажная боевая башня с пирамидально-ступенчатой кровлей.', facts: null }
+  },
+  {
+    id: 'sight-phakoch',
+    number: 22, area: 'itum-kali', village: 'Пхакоч', category: 'sights',
+    title: 'Замковый комплекс Пхакоч', description: 'Средневековый замковый комплекс (X–XII века).',
+    coords: [42.73, 45.57], taip: null, tukhum: null,
+    details: { image: null, history: 'В одной из башен устроен музей.', architecture: 'Жилые и боевые башни, водяная мельница.', facts: null }
+  },
+  {
+    id: 'sight-tsoi-pede',
+    number: 23, area: 'itum-kali', village: 'Цой-Педе', category: 'sights',
+    title: 'Цой-Педе («Город мёртвых»)', description: 'Один из крупнейших средневековых некрополей на Кавказе (V–XVII века).',
+    coords: [42.68, 45.30], taip: null, tukhum: null,
+    details: { image: null, history: 'Десятки наземных и полуподземных склепов, сторожевые башни.', architecture: 'Склепы разной формы, петроглифы.', facts: 'Труднодоступное место у границы.' }
+  },
+
+  // ==========================================
+  // УРУС-МАРТАНОВСКИЙ РАЙОН
+  // ==========================================
+  {
+    id: 'person-taimasha',
+    number: 24, area: 'urus-martan', village: 'Гехи', category: 'people',
+    title: 'Таймасха Гехинская', description: 'Женщина-военачальница: возглавила отряд мюридов и около десяти лет противостояла царским войскам.',
+    coords: [43.12, 45.54], taip: null, tukhum: null,
+    details: { image: null, history: 'В 1842 году после боя близ Большой Яндырки её взяли в плен.', architecture: null, facts: null }
+  },
+  {
+    id: 'person-khavadzhi',
+    number: 25, area: 'urus-martan', village: 'Алхазурово', category: 'people',
+    title: 'Хаваджи Магомед-Мирзоев', description: 'Герой Советского Союза (посмертно, 1944). Пулемётчик.',
+    coords: [43.12070, 45.54090], taip: null, tukhum: null,
+    details: { image: null, history: 'До войны работал учителем и директором школы в Алхазурово. Форсировал Днепр, уничтожил 144 фашиста.', architecture: null, facts: null }
+  },
+  {
+    id: 'sight-dondi-yurt',
+    number: 26, area: 'urus-martan', village: 'Урус-Мартан', category: 'sights',
+    title: 'Музей «Донди-Юрт»', description: 'Частный музей Адама Сатуева с воссозданным фрагментом древнего поселения.',
+    coords: [43.12140, 45.54180], taip: null, tukhum: null,
+    details: { image: null, history: 'Обширная коллекция подлинных предметов.', architecture: null, facts: null }
+  },
+  {
+    id: 'person-movladi',
+    number: 27, area: 'urus-martan', village: 'Урус-Мартан', category: 'people',
+    title: 'Мовлди Умаров', description: 'Герой Российской Федерации (посмертно, 1996). Командир стрелковой роты.',
+    coords: [43.12210, 45.54270], taip: null, tukhum: null,
+    details: { image: null, history: 'Вёл бойцов в рукопашную схватку, будучи раненым.', architecture: null, facts: null }
+  },
+  {
+    id: 'event-goyty',
+    number: 28, area: 'urus-martan', village: 'Гойты', category: 'events',
+    title: 'Гойтинское сражение', description: 'Чеченцы отразили карательный рейд войск Деникина.',
+    coords: [43.12280, 45.54360], taip: null, tukhum: null,
+    details: { image: null, history: null, architecture: null, facts: null }
+  },
+  {
+    id: 'event-alkhan-yurt',
+    number: 29, area: 'urus-martan', village: 'Алхан-Юрт', category: 'events',
+    title: 'Антиденикинское восстание (1919)', description: 'Село стало центром мощного восстания. В боях с белоказаками погибли сотни алханюртовцев.',
+    coords: [43.12350, 45.54450], taip: null, tukhum: null,
+    details: { image: null, history: null, architecture: null, facts: null }
+  },
+
+  // ==========================================
+  // АЧХОЙ-МАРТАНОВСКИЙ РАЙОН
+  // ==========================================
+  {
+    id: 'event-valerik',
+    number: 30, area: 'achkhoy', village: 'Валерик', category: 'events',
+    title: 'Сражение на реке Валерик (1840)', description: 'В этом бою участвовал Михаил Лермонтов.',
+    coords: [43.18, 45.28], taip: null, tukhum: null,
+    details: { image: null, history: 'Лермонтов наблюдал за действиями передовой штурмовой колонны.', architecture: null, facts: 'Лермонтов посвятил сражению стихотворение.' }
+  },
+  {
+    id: 'person-khasmagomed',
+    number: 31, area: 'achkhoy', village: 'Закан-Юрт', category: 'people',
+    title: 'Хасмагомед Сайгадинов', description: 'Один из пяти чеченцев, командовавших полком в годы ВОВ.',
+    coords: [43.18070, 45.28090], taip: null, tukhum: null,
+    details: { image: null, history: 'Форсировал Днепр, помог наладить связь. Награждён орденом Красного Знамени.', architecture: null, facts: null }
+  },
+  {
+    id: 'person-alavdi',
+    number: 32, area: 'achkhoy', village: 'Ачхой-Мартан', category: 'people',
+    title: 'Алауди Устарханов', description: 'Кадровый офицер, организовал побег из концлагеря.',
+    coords: [43.18140, 45.28180], taip: null, tukhum: null,
+    details: { image: null, history: 'Возглавил партизанский отряд во Франции. Награждён высшей военной наградой Франции.', architecture: null, facts: null }
+  },
+  {
+    id: 'person-khamid',
+    number: 33, area: 'achkhoy', village: 'Ачхой-Мартан', category: 'people',
+    title: 'Хамид Мамакаев', description: 'Директор школы, ушёл на фронт, числился пропавшим без вести.',
+    coords: [43.18210, 45.28270], taip: null, tukhum: null,
+    details: { image: null, history: 'Останки найдены поисковиками в 2014 году в Крыму.', architecture: null, facts: 'СОШ №6 присвоено его имя.' }
+  },
+  {
+    id: 'sight-galanchozh',
+    number: 34, area: 'achkhoy', village: 'Галанчож', category: 'sights',
+    title: 'Озеро Галанчож', description: 'Живописное озеро на высоте 1530 метров. Сравнивают с «голубым глазом».',
+    coords: [42.88, 45.36], taip: null, tukhum: null,
+    details: { image: null, history: 'Рядом есть природная достопримечательность — Галанчожская каменная арка.', architecture: null, facts: 'В окрестностях встречаются старинные башни и стелы.' }
+  },
+
+  // ==========================================
+  // ГРОЗНЫЙ И ДРУГИЕ
+  // ==========================================
+  {
+    id: 'person-mariam',
+    number: 35, area: 'grozny', village: 'Грозный', category: 'people',
+    title: 'Марьям Чентиева', description: 'Первая чеченка, получившая степень кандидата наук.',
+    coords: [43.31, 45.69], taip: null, tukhum: null,
+    details: { image: null, history: 'Работала в Чечено-Ингушском НИИ.', architecture: null, facts: null }
+  },
+  {
+    id: 'person-zulai',
+    number: 36, area: 'grozny', village: 'Грозный', category: 'people',
+    title: 'Зулай Хасбулатова', description: 'Первая чеченская женщина-этнограф, доктор исторических наук.',
+    coords: [43.31070, 45.69090], taip: null, tukhum: null,
+    details: { image: null, history: 'Издала более 150 научных работ.', architecture: null, facts: null }
+  },
+  {
+    id: 'person-zinaida',
+    number: 37, area: 'grozny', village: 'Грозный', category: 'people',
+    title: 'Зинаида Хасбулатова', description: 'Доктор химических наук, профессор.',
+    coords: [43.31140, 45.69180], taip: null, tukhum: null,
+    details: { image: null, history: 'Автор более 150 работ, имеет 9 патентов.', architecture: null, facts: null }
+  },
+  {
+    id: 'person-rezeda',
+    number: 38, area: 'grozny', village: 'Грозный', category: 'people',
+    title: 'Резеда Даутова', description: 'Первая женщина-археолог в Чечне.',
+    coords: [43.31210, 45.69270], taip: null, tukhum: null,
+    details: { image: null, history: 'Исследовала Цой-Педе, Галанчож, Эгичож.', architecture: null, facts: null }
+  },
+    {
+    id: 'event-aldy',
+    number: 39, area: 'grozny', village: 'Алды', category: 'events',
+    title: 'Сожжение Алды (1819)', description: 'Карательная экспедиция генерала Ермолова.',
+    coords: [43.28, 45.70], taip: null, tukhum: null,
+    details: { image: null, history: 'В 1785 году здесь Ушурма (Шейх Мансур) провозгласил себя имамом.', architecture: null, facts: null }
+  },
+  {
+    id: 'person-mansur',
+    number: 40, area: 'grozny', village: 'Алды', category: 'people',
+    title: 'Шейх Мансур (Ушурма)', description: 'Военный и религиозный лидер, руководитель восстания 1785–1791 годов.',
+    coords: [43.28070, 45.70090], taip: 'Элистанжхой', tukhum: null,
+    details: { image: null, history: 'Умер в Шлиссельбургской крепости.', architecture: null, facts: null }
+  },
+
+  // ==========================================
+  // ШАТОЙСКИЙ РАЙОН
+  // ==========================================
+  {
+    id: 'sight-nikhaloy',
+    number: 41, area: 'shatoy', village: 'Нихалой', category: 'sights',
+    title: 'Нихалойские водопады', description: 'Каскад из 12 водопадов (высота до 32 метров).',
+    coords: [42.82, 45.73], taip: null, tukhum: null,
+    details: { image: null, history: null, architecture: 'Лестницы, мостики, смотровые площадки.', facts: null }
+  },
+  {
+    id: 'person-batuko',
+    number: 42, area: 'shatoy', village: 'Гуш-Керт', category: 'people',
+    title: 'Батуко Шатоевский', description: 'Наиб Шатоевского округа. После ранения в 1858 году попал в плен.',
+    coords: [42.87, 45.70], taip: null, tukhum: null,
+    details: { image: null, history: null, architecture: null, facts: null }
+  },
+
+  // ==========================================
+  // ДРУГИЕ РАЙОНЫ
+  // ==========================================
+  {
+    id: 'sight-kezenoyam',
+    number: 43, area: 'vedeno', village: 'Кезеной', category: 'sights',
+    title: 'Озеро Кезеной-Ам', description: 'Самое большое и глубокое высокогорное озеро Чечни (1870 м).',
+    coords: [42.77, 46.15], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Образовалось, когда сошедший оползень перегородил русло двух горных рек.',
+      architecture: null,
+      facts: 'На берегу есть туристическая инфраструктура: можно арендовать лодку, устроить пикник.'
+    }
+  },
+  {
+    id: 'tower-sharoy',
+    number: 44, area: 'sharoy', village: 'Шарой', category: 'towers',
+    title: 'Шаройский башенный комплекс', description: 'Крупный комплекс, включающий боевые и жилые башни, мечеть. Самые старые постройки датируются XIII веком.',
+    coords: [42.63, 45.81], taip: null, tukhum: null,
+    details: { image: null, history: 'Шаройский район иногда называют «чеченской Швейцарией».', architecture: 'Фрагменты кладки XIII–XV веков, петроглифы и тамги.', facts: null }
+  },
+  {
+    id: 'tower-khimoy',
+    number: 45, area: 'sharoy', village: 'Химой', category: 'towers',
+    title: 'Химойский башенный комплекс', description: 'Заметный комплекс, среди построек встречаются жилые башни.',
+    coords: [42.63070, 45.81090], taip: null, tukhum: null,
+    details: { image: null, history: 'Жилые башни носят имена своих последних хозяев.', architecture: null, facts: null }
+  },
+  {
+    id: 'event-dadi-yurt',
+    number: 46, area: 'shchelkov', village: 'Дади-Юрт', category: 'events',
+    title: 'Бой при Дади-Юрте (1819)', description: '15 сентября 1819 года войска штурмовали аул. Каждый двор приходилось брать после артиллерийского обстрела.',
+    coords: [43.50, 46.20], taip: null, tukhum: null,
+    details: { image: null, history: 'С этим событием связана трагическая легенда о девушках, бросившихся в Терек.', architecture: null, facts: null }
+  },
+  {
+    id: 'person-aibika',
+    number: 47, area: 'shchelkov', village: 'Дади-Юрт', category: 'people',
+    title: 'Дадин Айбика', description: 'Дочь основателя села, героиня обороны аула в 1819 году.',
+    coords: [43.50070, 46.20090], taip: null, tukhum: null,
+    details: { image: null, history: 'Вместе с другими девушками помогала раненым и подносила боеприпасы. Погибла с кинжалом в руках.', architecture: null, facts: 'В её честь учреждён День чеченской женщины.' }
+  },
+   {
+    id: 'tower-vaserkeli',
+    number: 48, area: 'itum-kali', village: 'Васеркели', category: 'towers',
+    title: 'Васеркелиский башенный комплекс',
+    description: 'Один из древнейших комплексов Чечни (XI век): 12 башен и «город мёртвых» с ~80 склепами.',
+    coords: [42.75, 45.55], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Комплекс датируется XI веком и отражает классическую горскую архитектуру: боевые башни служили для обороны, жилые — для проживания больших семей. Склепы рядом свидетельствуют о развитом погребальном культе.',
+      architecture: '12 башен: 2 боевых и 10 жилых. Рядом — «город мёртвых» с около 80 наземными склепами.',
+      facts: 'Один из древнейших башенных комплексов Чечни.'
+    }
+  },
+  {
+    id: 'tower-bekhaila',
+    number: 49, area: 'itum-kali', village: 'Бекхайла', category: 'towers',
+    title: 'Бекхайлский башенный комплекс',
+    description: 'Три боевые башни на гребне горы Бекхайла близ Верхнего Кокадоя — один из самых впечатляющих панорамных комплексов Чечни.',
+    coords: [42.88, 45.72], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Башни на Бекхайле контролировали горные проходы. Их расположение на гребне делало комплекс практически неприступным. Сегодня это популярный объект исторического туризма.',
+      architecture: 'Три боевые башни на гребне горы.',
+      facts: 'Один из самых впечатляющих панорамных комплексов Чечни.'
+    }
+  },
+  {
+    id: 'tower-gimroy',
+    number: 50, area: 'itum-kali', village: 'Гимрой', category: 'towers',
+    title: 'Гимройский историко-архитектурный комплекс',
+    description: 'Комплекс XIV–XVI вв. в Итум-Калинском районе: полубоевые и жилые башни.',
+    coords: [42.72, 45.58], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Гимройский комплекс — типичный пример средневекового горского поселения XIV–XVI вв. Полубоевые башни сочетали оборонительные и жилые функции.',
+      architecture: 'Как минимум две полубоевые башни и несколько жилых сооружений (по документам Департамента охраны культурного наследия ЧР).',
+      facts: 'Классический горский башенный комплекс.'
+    }
+  },
+  {
+    id: 'tower-beniyst',
+    number: 51, area: 'achkhoy', village: 'Бенийст', category: 'towers',
+    title: 'Бенийстийский башенный комплекс',
+    description: 'Пять жилых и две полубоевые башни в труднодоступном ущелье Малхиста.',
+    coords: [42.70, 45.50], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Бенийст (Бенийсти) — бывшее село в ущелье Малхиста. Комплекс датируется XIV–XVI вв. и сохраняет аутентичную горную архитектуру.',
+      architecture: 'Пять жилых башен и две полубоевые. Расположен в труднодоступном горном ущелье, что характерно для чеченского башенного зодчества.',
+      facts: 'Ущелье Малхиста — одно из самых труднодоступных мест Чечни.'
+    }
+  },
+  {
+    id: 'tower-khaybakh',
+    number: 52, area: 'achkhoy', village: 'Хайбах', category: 'towers',
+    title: 'Хайбахский башенный комплекс',
+    description: 'Крупный средневековый комплекс с отреставрированной боевой башней (2019).',
+    coords: [43.0537, 45.2627], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'В комплексе жили фамилии, относящиеся к чеченскому тейпу «нашхой». Боевая башня была частично разрушена во время второй военной кампании, затем восстановлена в 2019 году.',
+      architecture: 'Фортификационные, жилые и культовые сооружения, включая боевые и жилые башни, а также мечеть. Боевая башня №1 — пятиэтажное здание высотой около 20 метров.',
+      facts: 'Боевая башня отреставрирована в 2019 году.'
+    }
+  },
+      // ==========================================
+  // ДОПОЛНИТЕЛЬНЫЕ БАШНИ (из списка Википедии)
+  // ==========================================
+  {
+    id: 'tower-aldam-gezi',
+    number: 53, area: 'vedeno', village: 'Кезеной', category: 'towers',
+    title: 'Алдам-Гези (замок)',
+    description: 'Замковый комплекс, древнейшее ядро селения Кезеной.',
+    coords: [42.77070, 46.15090], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Наиболее древнее ядро селения Кезеной представляет собой целый архитектурный ансамбль, который именуется замок Алдам-Гези.',
+      architecture: 'Замковый комплекс.',
+      facts: 'Датируется примерно XIV веком.'
+    }
+  },
+  {
+    id: 'tower-acharoy',
+    number: 54, area: 'shatoy', village: 'Шатой', category: 'towers',
+    title: 'Ачалойская башня',
+    description: 'Средневековая башня в Шатойском районе.',
+    coords: [42.87070, 45.70090], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Упоминается в списке башен Чечни.',
+      architecture: null,
+      facts: 'Датируется ранее XIV века.'
+    }
+  },
+  {
+    id: 'tower-baroy',
+    number: 55, area: 'itum-kali', village: 'Баулой', category: 'towers',
+    title: 'Баройский башенный комплекс',
+    description: 'Два раздельно стоящих укрепления — Верхний и Нижний Бара.',
+    coords: [42.78070, 45.55090], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'В составе комплекса была боевая башня (ныне разрушенная) и около десятка жилых строений.',
+      architecture: 'Два раздельно стоящих укрепления.',
+      facts: 'Датируется XIV веком.'
+    }
+  },
+  {
+    id: 'tower-bauloy',
+    number: 56, area: 'itum-kali', village: 'Баулой', category: 'towers',
+    title: 'Баулойские башни',
+    description: 'Комплекс башен в Итум-Калинском районе, включая одну высотой 16–17 м.',
+    coords: [42.75, 45.58], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Одна башня на берегу Тонкой-Ахк имела высоту 16-17 м. Рядом с ней стояла жилая башня. Также близ села была еще одна башня.',
+      architecture: 'Башни различной сохранности.',
+      facts: 'Датируются XIV—XVI вв.'
+    }
+  },
+  {
+    id: 'tower-bashin-kali',
+    number: 57, area: 'itum-kali', village: 'Итум-Кали', category: 'towers',
+    title: 'Башен-Калинская боевая башня',
+    description: 'Наскальная башня-убежище.',
+    coords: [42.76, 45.60], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: null,
+      architecture: 'Является наскальной башней-убежищем.',
+      facts: 'Датируется XIV-XVI вв.'
+    }
+  },
+  {
+    id: 'tower-bugary',
+    number: 58, area: 'itum-kali', village: 'Бугарой', category: 'towers',
+    title: 'Бугаройская боевая башня',
+    description: 'Боевая башня, от которой сохранились две стены.',
+    coords: [42.74, 45.52], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: null,
+      architecture: 'Сохранились две стены.',
+      facts: 'Датируется XIII-XVI вв.'
+    }
+  },
+  {
+    id: 'tower-pkier',
+    number: 59, area: 'itum-kali', village: 'Хилдехарой', category: 'towers',
+    title: 'Пкиерская башня',
+    description: 'Трёхэтажная башня на склоне горы Пкъиер-лам (около 2400 м).',
+    coords: [42.70, 45.45], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Находилась на склоне горы Пкъиер-лам на высоте около 2400 метров.',
+      architecture: 'Башня была трёхэтажной, верхняя часть разрушена.',
+      facts: 'Датируется XIV—XVI вв.'
+    }
+  },
+  {
+    id: 'tower-sakankhoy',
+    number: 60, area: 'itum-kali', village: 'Итум-Кали', category: 'towers',
+    title: 'Саканхойская башня',
+    description: 'Башня в разрушенном состоянии, утрачены верхние этажи.',
+    coords: [42.72, 45.48], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: null,
+      architecture: 'Находится в разрушенном состоянии, отсутствуют последние этажи с машикулями и кровля.',
+      facts: 'Датируется XIV—XVI вв.'
+    }
+  },
+  {
+    id: 'tower-kirda',
+    number: 61, area: 'itum-kali', village: 'Итум-Кали', category: 'towers',
+    title: 'КIирда-БIаьвнаш (башенный комплекс)',
+    description: 'Комплекс из трёх боевых башен у начала Терлойского ущелья.',
+    coords: [42.71553, 45.39889], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Комплекс сильно пострадал в 1990-2000-е годы, к настоящему времени от него сохранились развалины лишь одной из башен.',
+      architecture: 'Состоял из трёх боевых башен и склеповых могильников.',
+      facts: 'Датируется XIV веком. Хорошо виден с автодороги Итум-Кале – Цой-Педе.'
+    }
+  },
+    {
+    id: 'person-ibragimov-khamzat',
+    number: 62, area: 'shali', village: 'Шали', category: 'people',
+    title: 'Хамзат Исмаилович Ибрагимов',
+    description: 'Первый чеченец — кандидат физико-математических наук (1965), первый президент Академии наук ЧР.',
+    coords: [43.15420, 45.90540], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Родился в 1934 году в Шали. В 1944–1957 годах находился в ссылке. Окончил институт с отличием, поступил в аспирантуру МГУ. С 1972 по 1987 год — проректор ЧИГУ. В 1992 году возглавил Совет по организации Академии наук ЧР, был её первым президентом. С 2000 года — директор-организатор Комплексного НИИ РАН в Грозном.',
+      architecture: null,
+      facts: 'Институт в Грозном носит его имя.'
+    }
+  },
+  {
+    id: 'person-tsebiev-akhmed',
+    number: 63, area: 'grozny', village: 'Грозный', category: 'people',
+    title: 'Ахмед Магамедович Цебиев (1935–2000)',
+    description: 'Физик, в 1959 году сделал открытие генерации и усиления электромагнитных колебаний.',
+    coords: [43.31280, 45.69360], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Открытие нового физического явления оказало революционное влияние на развитие физики и имело огромное прикладное значение.',
+      architecture: null,
+      facts: 'Диссертацию защитил по техническим наукам.'
+    }
+  },
+  {
+    id: 'person-visaitov-movladi',
+    number: 64, area: 'grozny', village: 'Грозный', category: 'people',
+    title: 'Мовлади Алероевич Висаитов (1914–1986)',
+    description: 'Герой Советского Союза (1990), командир кавалерийского полка в годы ВОВ.',
+    coords: [43.31350, 45.69450], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Был представлен к званию Героя ещё в 1945 году, но удостоен только в 1990-м.',
+      architecture: null,
+      facts: null
+    }
+  },
+  {
+    id: 'person-elmurzaev-yusup',
+    number: 65, area: 'urus-martan', village: 'Урус-Мартан', category: 'people',
+    title: 'Юсуп Эльмурзаев',
+    description: 'Герой России (1996, посмертно), глава администрации Урус-Мартановского района.',
+    coords: [43.12420, 45.54540], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Убит 8 июня 1996 года. Звание присвоено 11 июня 1996 года.',
+      architecture: null,
+      facts: null
+    }
+  },
+    // ==========================================
+  // ПИСАТЕЛИ И ПОЭТЫ
+  // ==========================================
+  {
+    id: 'person-raisa-akhmatova',
+    number: 66, area: 'grozny', village: 'Грозный', category: 'people',
+    title: 'Раиса Ахматова (1928–1992)',
+    description: 'Народная поэтесса Чечено-Ингушетии. Первый сборник «Хьоме республика» вышел в 1958 году.',
+    coords: [43.31420, 45.69540], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'С 1961 по 1983 год возглавляла Союз писателей ЧИАССР.',
+      architecture: null,
+      facts: 'Первый сборник «Хьоме республика» вышел в 1958 году.'
+    }
+  },
+  {
+    id: 'person-saidbey-arsanov',
+    number: 67, area: 'grozny', village: 'Грозный', category: 'people',
+    title: 'Саидбей Арсанов',
+    description: 'Создатель чеченского исторического романа, руководил секцией чеченских писателей с 1929 года.',
+    coords: [43.31490, 45.69630], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'С 1929 года руководил секцией чеченских писателей.',
+      architecture: null,
+      facts: 'Один из основоположников чеченского исторического романа.'
+    }
+  },
+  {
+    id: 'person-magomet-mamakaev',
+    number: 68, area: 'nozhay', village: 'Ножай-Юрт', category: 'people',
+    title: 'Магомет Мамакаев (1910–1973)',
+    description: 'Классик чеченской литературы, автор романов «Мюрид революции» и «Зелимхан».',
+    coords: [43.05, 46.38], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: null,
+      architecture: null,
+      facts: 'Автор романов «Мюрид революции» и «Зелимхан».'
+    }
+  },
+  {
+    id: 'person-abuzar-aidamirov',
+    number: 69, area: 'nozhay', village: 'Ножай-Юрт', category: 'people',
+    title: 'Абузар Айдамиров (1933–2005)',
+    description: 'Писатель, автор романов «Именем свободы» и «Долгие ночи». Родился в селе Мескеты Ножай-Юртовского района.',
+    coords: [43.05070, 46.38090], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Родился в селе Мескеты Ножай-Юртовского района.',
+      architecture: null,
+      facts: 'Автор романов «Именем свободы» и «Долгие ночи».'
+    }
+  },
+
+  // ==========================================
+  // ХУДОЖНИКИ
+  // ==========================================
+  {
+    id: 'person-said-bitsiraev',
+    number: 70, area: 'gudermes', village: 'Гудермес', category: 'people',
+    title: 'Саид Бицираев (1954)',
+    description: 'Народный художник ЧР, заслуженный художник РФ, профессор.',
+    coords: [43.35, 46.10], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Родовое село — Нойбера. Работы хранятся в музеях России, Финляндии, Германии, США и др.',
+      architecture: null,
+      facts: 'Народный художник ЧР, заслуженный художник РФ, профессор.'
+    }
+  },
+  {
+    id: 'person-aindi-shamilov',
+    number: 71, area: 'gudermes', village: 'Гудермес', category: 'people',
+    title: 'Айнди Шамилов (1949)',
+    description: 'Народный художник ЧР (2016), заслуженный художник ЧР (2008).',
+    coords: [43.35070, 46.10090], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Работает в жанрах батальных сцен, исторических сюжетов, пейзажей.',
+      architecture: null,
+      facts: 'Народный художник ЧР (2016), заслуженный художник ЧР (2008).'
+    }
+  },
+
+  // ==========================================
+  // УЧЁНЫЕ
+  // ==========================================
+  {
+    id: 'person-akhmed-tsebiev',
+    number: 72, area: 'grozny', village: 'Грозный', category: 'people',
+    title: 'Ахмед Цебиев (1935–2000)',
+    description: 'Физик, кандидат технических наук, автор открытия и 26 изобретений в области радиоэлектроники и радиосвязи.',
+    coords: [43.31560, 45.69720], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Автор открытия и 26 изобретений в области радиоэлектроники и радиосвязи.',
+      architecture: null,
+      facts: 'Кандидат технических наук.'
+    }
+  },
+  {
+    id: 'person-khasan-turkaev',
+    number: 73, area: 'grozny', village: 'Грозный', category: 'people',
+    title: 'Хасан Туркаев (1937)',
+    description: 'Доктор филологических наук, профессор, заслуженный деятель науки РФ (2006), член Союза писателей СССР.',
+    coords: [43.31630, 45.69810], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: null,
+      architecture: null,
+      facts: 'Заслуженный деятель науки РФ (2006), член Союза писателей СССР.'
+    }
+  },
+  {
+    id: 'person-aslanbek-khasbulatov',
+    number: 74, area: 'grozny', village: 'Грозный', category: 'people',
+    title: 'Асланбек Хасбулатов (1937–2013)',
+    description: 'Доктор исторических наук, профессор ЧГУ, заслуженный деятель науки ЧИАССР.',
+    coords: [43.31700, 45.69900], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: null,
+      architecture: null,
+      facts: 'Заслуженный деятель науки ЧИАССР.'
+    }
+  },
+  {
+    id: 'person-mukhadi-umarov',
+    number: 75, area: 'grozny', village: 'Грозный', category: 'people',
+    title: 'Мухади Умаров (1941)',
+    description: 'Доктор биологических наук, профессор, академик АН ЧР, заслуженный деятель науки ЧР.',
+    coords: [43.31770, 45.69990], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: null,
+      architecture: null,
+      facts: 'Академик АН ЧР, заслуженный деятель науки ЧР.'
+    }
+  },
+
+  // ==========================================
+  // ВОЕННЫЕ И ГЕРОИ
+  // ==========================================
+  {
+    id: 'person-dasha-akaev',
+    number: 76, area: 'grozny', village: 'Грозный', category: 'people',
+    title: 'Даша Акаев (1910–1944)',
+    description: 'Первый чеченский лётчик, майор, командир 35 штурмового авиаполка, участник ВОВ.',
+    coords: [43.31840, 45.70080], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Командир 35 штурмового авиаполка, участник Великой Отечественной войны.',
+      architecture: null,
+      facts: 'Первый чеченский лётчик.'
+    }
+  },
+  {
+    id: 'person-makhmud-amaev',
+    number: 77, area: 'grozny', village: 'Грозный', category: 'people',
+    title: 'Махмуд Амаев (1916–1943)',
+    description: 'Младший сержант, снайпер, уничтожил 186 фашистов.',
+    coords: [43.31910, 45.70170], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Снайпер, уничтожил 186 фашистов.',
+      architecture: null,
+      facts: 'Младший сержант.'
+    }
+  },
+  {
+    id: 'person-matash-mazaev',
+    number: 78, area: 'grozny', village: 'Грозный', category: 'people',
+    title: 'Маташ Мазаев (1908–1942)',
+    description: 'Советский танкист, капитан, участник Польского похода, Зимней войны и ВОВ.',
+    coords: [43.31980, 45.70260], taip: null, tukhum: null,
+    details: {
+      image: null,
+      history: 'Участник Польского похода, Зимней войны и Великой Отечественной войны.',
+      architecture: null,
+      facts: 'Капитан, танкист.'
+    }
+  },
+];
